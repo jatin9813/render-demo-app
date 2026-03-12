@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Demo App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; }
+        #output { margin-top: 20px; font-size: 20px; color: #333; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Mera Pehla Render Project! 🚀</h1>
+    <p>Niche diye gaye button par click karein aur backend se data mangwayein.</p>
+    
+    <button onclick="fetchData()">Backend Se Data Laao</button>
+    <div id="output"></div>
+
+    <script>
+        function fetchData() {
+            document.getElementById('output').innerText = "Loading...";
+            fetch('/api/greet')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').innerText = data.message;
+                })
+                .catch(error => {
+                    document.getElementById('output').innerText = "Error aa gaya bhai!";
+                });
+        }
+    </script>
+</body>
+</html>
